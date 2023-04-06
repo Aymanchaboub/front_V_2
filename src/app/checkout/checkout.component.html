@@ -1,0 +1,141 @@
+<app-header></app-header>
+<body>
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Checkout</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Checkout Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
+                <form (ngSubmit)="onSubmit()">
+                <div class="bg-light p-30 mb-5">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Name</label>
+                            <input class="form-control" type="text" placeholder="la valeur de nom ">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="la valeur de email de user">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Telephone</label>
+                            <input class="form-control" type="text" id="numero" [(ngModel)]="commande.numero" name="numero" placeholder="+123 456 789">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address Line </label>
+                            <input class="form-control" type="text" id="adresse" [(ngModel)]="commande.adresse" name="adresse" placeholder="123 Street">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label>pays</label>
+                            <input class="form-control" id="pays" [(ngModel)]="commande.pays" name="pays" type="text" placeholder="New York">
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>ville</label>
+                            <input class="form-control" id="ville" [(ngModel)]="commande.ville" name="ville" type="text" placeholder="New York">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label>ZIP Code</label>
+                            <input class="form-control" type="text"  id="zip" [(ngModel)]="commande.zip" name="zip" placeholder="123">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="newaccount">
+                                <label class="custom-control-label" for="newaccount">Create an account</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="typeDePayment">Type de payment:</label>
+                            <select class="form-control" id="typeDePayment" [(ngModel)]="commande.typeDePayment" name="typeDePayment">
+                              <option value="credit">Credit</option>
+                              <option value="debit">Debit</option>
+                              <option value="paypal">Paypal</option>
+                            </select>
+                          </div>
+                        <div class="form-group">
+                            <label for="statutCommande">Statut de la commande:</label>
+                            <select class="form-control" id="statutCommande" [(ngModel)]="commande.statutCommande" name="statutCommande">
+                              <option [ngValue]="true">Paiement recu</option>
+                              <option [ngValue]="false">En attente de paiement</option>
+                            </select>
+                          </div>
+
+                    </div>
+                </div>
+                <div class="collapse mb-5" id="shipping-address">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
+                    <div class="bg-light p-30">
+                        <div class="row">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button type="submit">create</button>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="border-bottom">
+                        <h6 class="mb-3">Products</h6>
+                        <div class="d-flex justify-content-between">
+                            <p>Product Name 1</p>
+                            <p>$150</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Product Name 2</p>
+                            <p>$150</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Product Name 3</p>
+                            <p>$150</p>
+                        </div>
+                    </div>
+                    <div class="border-bottom pt-3 pb-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Subtotal</h6>
+                            <h6>$150</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">$10</h6>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Total</h5>
+                            <h5>$160</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+
+
+
+
+
+</body>
+
+<app-footer></app-footer>
