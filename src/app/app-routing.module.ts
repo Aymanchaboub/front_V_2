@@ -19,6 +19,11 @@ import { SousCategoryCreateComponent } from './componement/sous-categories/sous-
 import { SousCategoriesListComponent } from './componement/sous-categories/sous-categories-list/sous-categories-list.component';
 import { SousCategoriesEditComponent } from './componement/sous-categories/sous-categories-edit/sous-categories-edit.component';
 import { CreateProduitComponent } from './componement/produit/create-produit/create-produit.component';
+import { LivreurComponent } from './livreur/livreur.component';
+import { IscompleteComponent } from './iscomplete/iscomplete.component';
+import { OffreComponent } from './offre/offre.component';
+import { ListProduitComponent } from './componement/produit/list-produit/list-produit.component';
+import { FiltrageComponent } from './filtrage/filtrage.component';
 
 
 
@@ -39,10 +44,14 @@ const routes: Routes = [
   {path:'sous-categories',component:SousCategoriesListComponent},
   {path:'sous-categories/create',component:SousCategoryCreateComponent},
   {path:'sous-categories/edit/:id',component:SousCategoriesEditComponent},
+  {path:'livreur',component:LivreurComponent},
+  {path:'produits',component:ListProduitComponent},
 
-  {path:'add',component:CreateProduitComponent},
+  {path:'produits/create',component:CreateProduitComponent},
   { path: 'admin', component: BoardAdminComponent  },
-
+  {path:'iscomplete',component:IscompleteComponent},
+  { path: 'offre/:idProduit', component: OffreComponent },
+  { path: 'filtrage/:sousCategorieId', component: FiltrageComponent },
 
 
   {path:'cart',component:CartComponent}

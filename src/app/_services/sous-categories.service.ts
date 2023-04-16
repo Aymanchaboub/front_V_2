@@ -40,7 +40,6 @@ export class SousCategoriesService {
 
   getSousCategoriesByCategorieId(categorieId: number): Observable<SousCategories[]> {
     const url = `${this.apiUrl}/ByID/${categorieId}`;
-    console.log('asba')
     return this.http.get<SousCategories[]>(url);
   }
 }

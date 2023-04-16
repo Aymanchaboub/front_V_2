@@ -63,7 +63,9 @@ export class CartitemService {
         catchError(this.handleError)
       );
   }
-
+  getListCartItemsByCartId(cartId: number): Observable<CartItem[]> {
+    return this.http.get<CartItem[]>(`${this.cartUrl}/${cartId}`);
+  }
   
   
 

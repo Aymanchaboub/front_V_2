@@ -6,6 +6,7 @@ export class Commande {
   ville!: string;
   pays!: string;
   numero!: string;
+  dateCreation!: Date;
   user: {
     id: any;
     nom: string;
@@ -28,5 +29,7 @@ export class Commande {
     totale: any;
   }[];
   typeDePayment!: string;
+  selected!: boolean;
+
   statutCommande!: boolean;
 }

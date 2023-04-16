@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Categorie } from '../model/categorie';
+import { SousCategories } from '../model/sous-categories';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Categorie } from '../model/categorie';
 export class CategorieService {
 
   private apiUrl = 'http://localhost:8080/api/auth/categories';
+  private baseUrl = '/api/auth/categories/souscategories';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -39,4 +41,9 @@ export class CategorieService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+  getSousCategoriesByCategorie(id: number): Observable<SousCategories[]> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<SousCategories[]>(url);
+  }
+  
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Commande } from '../model/commande'; 
 import { CartitemService } from './cartitem.service';
 import { CartItem } from '../model/cartitem';
@@ -13,12 +13,17 @@ export class CommandeService {
 
   constructor(private http: HttpClient,private cartService:CartitemService) {}
 
-  getAllCommandes(userId: number): Observable<Commande[]> {
-    return this.http.get<Commande[]>(`${this.API_URL}?userId=${userId}`);
+
+  getAllCommandes(): Observable<Commande[]> {
+    return this.http.get<Commande[]>(`${this.API_URL}`);
   }
 
   getCommandeById(id: number, userId: number): Observable<Commande> {
     return this.http.get<Commande>(`${this.API_URL}/${id}?userId=${userId}`);
+  }
+
+  getCommandeByIdOnly(id: number): Observable<Commande> {
+    return this.http.get<Commande>(`${this.API_URL}/${id}`);
   }
 
   createCommande(commande: Commande, userId: any, cartId: any): Observable<Commande> {
@@ -37,7 +42,19 @@ export class CommandeService {
     console.log(commandeData)
     return this.http.post<Commande>(`${this.API_URL}/commande/${cartId}?userId=${userId}`, commandeData);
   }
+  getNomByUserid(userId: any): Observable<any> {
+    return this.http.get(`${this.API_URL}/${userId}/nom`).pipe(
+      map(response => response)
+    );
+  }
   
+
+  getEmailByUserid(userId: any): Observable<any> {
+    return this.http.get(`${this.API_URL}/${userId}/email`, { responseType: 'text' });
+  }
+  getDateCreationById(id: number): Observable<Date> {
+    return this.http.get<Date>(`${this.API_URL}/${id}/dateCreation`);
+  }
 
   
   

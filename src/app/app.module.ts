@@ -29,6 +29,9 @@ import { SousCategoriesEditComponent } from './componement/sous-categories/sous-
 import { CreateProduitComponent } from './componement/produit/create-produit/create-produit.component';
 import { EditProduitComponent } from './componement/produit/edit-produit/edit-produit.component';
 import { ListProduitComponent } from './componement/produit/list-produit/list-produit.component';
+import { IscompleteComponent } from './iscomplete/iscomplete.component';
+import { OffreComponent } from './offre/offre.component';
+import { FiltrageComponent } from './filtrage/filtrage.component';
 
 
 
@@ -59,6 +62,9 @@ import { ListProduitComponent } from './componement/produit/list-produit/list-pr
      CreateProduitComponent,
      EditProduitComponent,
      ListProduitComponent,
+     IscompleteComponent,
+     OffreComponent,
+     FiltrageComponent,
 
 
   ],

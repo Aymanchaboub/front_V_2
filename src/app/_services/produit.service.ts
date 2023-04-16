@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produit } from '../model/produit';
@@ -38,5 +38,20 @@ export class ProduitService {
   deleteProduit(id: number): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
+  }
+  getProductPriceHistory(id: number): Observable<any[]> {
+    const url = `${this.apiUrl}/${id}/priceHistory`;
+    return this.http.get<any[]>(url);
+  }
+
+  updateProductPrice(id: number, pourcentage: number, dateExtraction: string): Observable<void> {
+    const url = `${this.apiUrl}/${id}/updatePrice/${pourcentage}`;
+    const params = new HttpParams().set('dateExtraction', dateExtraction);
+    return this.http.put<void>(url, null, { params });
+  }
+  
+  getProduitsBysousCategorieId(souscategorieId: number): Observable<Produit[]> {
+    const url = `${this.apiUrl}/ByID/${souscategorieId}`;
+    return this.http.get<Produit[]>(url);
   }
 }

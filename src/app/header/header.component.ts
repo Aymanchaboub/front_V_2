@@ -3,10 +3,11 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import { EventBusService } from '../_shared/event-bus.service';
-
-
-
-
+import { CategorieService } from '../_services/categorie.service';
+import { Categorie } from '../model/categorie';
+import { SousCategories } from '../model/sous-categories';
+import { SousCategoriesService } from '../_services/sous-categories.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,15 @@ import { EventBusService } from '../_shared/event-bus.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  categories!: Categorie[];
+  souscategories!: SousCategories[];
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
   @Input() cartCount = 0;
+  selectedSousCategorieId: number = 0;
 
 
   eventBusSub?: Subscription;
@@ -27,10 +31,17 @@ export class HeaderComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private categorieService:CategorieService,
+    private sousCategorieService:SousCategoriesService,
+    private route:Router,
   ) {}
 
   ngOnInit(): void {
+    this.categorieService.getAllCategories().subscribe((data: Categorie[]) => {
+      this.categories = data;
+    });
+    
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     if (this.isLoggedIn) {
@@ -47,6 +58,7 @@ export class HeaderComponent {
       this.logout();
     });
   }
+
   onCartCountChanged(newCount: number) {
     this.cartCount = newCount;
   }
@@ -64,5 +76,18 @@ export class HeaderComponent {
       }
     });
   }
+
+  getSousCategoriesByCategorie(categorieId: number) {
+    this.sousCategorieService.getSousCategoriesByCategorieId(categorieId).subscribe((data: SousCategories[]) => {
+      this.souscategories = data;
+      console.log(this.souscategories)
+    });
+    this.selectedSousCategorieId = 0; // Réinitialiser la valeur de l'ID de la sous-catégorie sélectionnée
+
+  }
   
+onSousCategorieSelect(sousCategorieId: number) {
+  this.selectedSousCategorieId = sousCategorieId;
+  this.route.navigate(['/filtrage',sousCategorieId])
+}
 }

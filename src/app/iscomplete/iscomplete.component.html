@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID de commande</th>
+      <th>Numéro de commande</th>
+      <th>ID de livreur</th>
+      <th>Statut de commande</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ligneCommande of lignesCommandes">
+      <td>
+        <span *ngFor="let commande of commandes">
+            {{commande.adresse}}
+
+            {{commande.numero}}
+        </span>
+      </td>
+      <td>{{ligneCommande.livreurId}}</td>
+      <td>{{ligneCommande.isComplete ? 'Validée' : 'En cours'}}</td>
+      <td>
+        <button  (click)="validerCommande(ligneCommande)">Valider</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
