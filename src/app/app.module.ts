@@ -32,6 +32,7 @@ import { ListProduitComponent } from './componement/produit/list-produit/list-pr
 import { IscompleteComponent } from './iscomplete/iscomplete.component';
 import { OffreComponent } from './offre/offre.component';
 import { FiltrageComponent } from './filtrage/filtrage.component';
+import { PdfComponent } from './pdf/pdf.component';
 
 
 
@@ -65,6 +66,7 @@ import { FiltrageComponent } from './filtrage/filtrage.component';
      IscompleteComponent,
      OffreComponent,
      FiltrageComponent,
+     PdfComponent,
 
 
   ],

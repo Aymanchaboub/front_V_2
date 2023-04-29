@@ -57,7 +57,9 @@ export class CommandeService {
   }
 
   
-  
+  getCommandeByUserId(userId: number): Observable<Commande[]> {
+    return this.http.get<Commande[]>(`${this.API_URL}/${userId}/pdf`);
+  }
   
 
   

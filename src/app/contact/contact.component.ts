@@ -1,6 +1,7 @@
 import { ContactService } from './../_services/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -9,9 +10,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactComponent implements OnInit {
   contact = { name: '', email: '', subject: '', message: '' };
-  serverUrl = 'http://localhost:8080/contact';
+  serverUrl = 'http://localhost:8080/api/auth/contact';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -19,6 +20,8 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.http.post(this.serverUrl, this.contact).subscribe(() => {
       alert('Votre message a été envoyé avec succès.');
+      this.router.navigate(['/home']);
+
     });
   }
 

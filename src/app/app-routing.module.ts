@@ -24,6 +24,7 @@ import { IscompleteComponent } from './iscomplete/iscomplete.component';
 import { OffreComponent } from './offre/offre.component';
 import { ListProduitComponent } from './componement/produit/list-produit/list-produit.component';
 import { FiltrageComponent } from './filtrage/filtrage.component';
+import { PdfComponent } from './pdf/pdf.component';
 
 
 
@@ -52,6 +53,7 @@ const routes: Routes = [
   {path:'iscomplete',component:IscompleteComponent},
   { path: 'offre/:idProduit', component: OffreComponent },
   { path: 'filtrage/:sousCategorieId', component: FiltrageComponent },
+  {path:'pdf',component:PdfComponent},
 
 
   {path:'cart',component:CartComponent}

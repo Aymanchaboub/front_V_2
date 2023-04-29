@@ -26,13 +26,10 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Name</label>
-                            <input class="form-control" type="text" placeholder="la valeur de nom ">
+                            <div class="form-control">  {{usernames[0]}} </div>
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="la valeur de email de user">
-                        </div>
+
                         <div class="col-md-6 form-group">
                             <label>Telephone</label>
                             <input class="form-control" type="text" id="numero" [(ngModel)]="commande.numero" name="numero" placeholder="+123 456 789">
@@ -59,24 +56,25 @@
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="typeDePayment">Type de payment:</label>
-                            <select class="form-control" id="typeDePayment" [(ngModel)]="commande.typeDePayment" name="typeDePayment">
-                              <option value="credit">Credit</option>
-                              <option value="debit">Debit</option>
-                              <option value="paypal">Paypal</option>
-                            </select>
+                        <div  class="col-md-6 form-group" class="form-group">
+                            <label>Type de payment:</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="typeDePayment" [(ngModel)]="commande.typeDePayment" id="credit" value="credit">
+                              <label class="form-check-label" for="credit">Payement Au Livraison</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="typeDePayment" [(ngModel)]="commande.typeDePayment" id="debit" value="debit">
+                              <label class="form-check-label" for="debit">Carte</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="typeDePayment" [(ngModel)]="commande.typeDePayment" id="paypal" value="paypal">
+                              <label class="form-check-label" for="paypal">Paypal</label>
+                            </div>
                           </div>
-                        <div class="form-group">
-                            <label for="statutCommande">Statut de la commande:</label>
-                            <select class="form-control" id="statutCommande" [(ngModel)]="commande.statutCommande" name="statutCommande">
-                              <option [ngValue]="true">Paiement recu</option>
-                              <option [ngValue]="false">En attente de paiement</option>
-                            </select>
-                          </div>
+                          
+
 
                     </div>
                 </div>

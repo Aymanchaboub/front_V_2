@@ -59,7 +59,7 @@
                             </td>
                             <td class="align-middle">${{ item.product.prix }}</td>
                             <td class="align-middle">
-                              <button class="btn btn-sm btn-danger" (click)="removeFromCart(item.product.id, item.quantity)">
+                              <button class="btn btn-sm btn-danger" (click)="deleteItem(item)">                                
                                 <i class="fa fa-times"></i>
                               </button>
                             </td>
@@ -90,8 +90,10 @@
                             <h5>Total</h5>
                             <h5>{{totalCartValue}}</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
-                    </div>
+                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" (click)="updatestock()">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3"(click)="emptyCart()">clear cart </button>
+                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Download Facture </button>
+                      </div>
                 </div>
             </div>
         </div>

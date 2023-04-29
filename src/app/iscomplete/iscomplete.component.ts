@@ -9,7 +9,7 @@ import { CommandeService } from '../_services/commande.service';
 @Component({
   selector: 'app-iscomplete',
   templateUrl: './iscomplete.component.html',
-  styleUrls: ['./iscomplete.component.css']
+  styleUrls: ['./iscomplete.component.css','./bootstrap.min.css','./style1.css','./style.css',  './fontawesome-all.css', './chartist.css','./morris.css','./c3.css','./flag-icon.min.css'],
 })
 export class IscompleteComponent {
   lignesCommandes!: Lignecommande[];

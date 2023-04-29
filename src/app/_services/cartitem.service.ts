@@ -32,6 +32,15 @@ export class CartitemService {
         catchError(this.handleError)
       );
   }
+  deleteItem(itemId: number): Observable<any> {
+    const url = `${this.cartUrl}/${itemId}`;
+    return this.http.delete(url);
+  }
+
+
+  emptyCart(): Observable<any> {
+    return this.http.delete(this.cartUrl);
+  }
   
   
   
@@ -66,6 +75,19 @@ export class CartitemService {
   getListCartItemsByCartId(cartId: number): Observable<CartItem[]> {
     return this.http.get<CartItem[]>(`${this.cartUrl}/${cartId}`);
   }
+  updateCartItemQuantity(cartItemId: number, quantity: number): Observable<CartItem> {
+    const url = `${this.cartUrl}/${cartItemId}/quantity/${quantity}`;
+    return this.http.put<CartItem>(url, null, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
+  
+
+  
+  
+  
   
   
 

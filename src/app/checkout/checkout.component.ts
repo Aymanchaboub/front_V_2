@@ -5,6 +5,7 @@ import { Commande } from '../model/commande';
 import { CartitemService } from '../_services/cartitem.service';
 import { CommandeService } from '../_services/commande.service';
 import { StorageService } from '../_services/storage.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +17,7 @@ export class CheckoutComponent implements OnInit {
   cartItems: CartItem[] = [];
   cartItemId!: number;
   cartId!: number;
+  usernames: string[] = [];
 
   constructor(
     private commandeService: CommandeService,
@@ -32,6 +34,14 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.storageService.getUser()?.id;
+
+
+
+    forkJoin(this.commandeService.getNomByUserid(userId)).subscribe(names => {
+      // push the names to the usernames array in the correct order
+      this.usernames = names.map(name => name['nom']);
+      console.log(this.usernames);
+    });
     const userName = this.storageService.getUser()?.userName;
     const usermail = this.storageService.getUser()?.email;
 
